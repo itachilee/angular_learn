@@ -23,4 +23,11 @@ export class LoginComponent implements OnInit {
 
     console.log(this.service.loginWithCredentials(this.userName, this.passWord));
   }
+
+  // 提交表单
+  // tslint:disable-next-line:typedef
+  onSubmit(formValue: any) {
+    console.log('auth result is: '
+      + this.service.loginWithCredentials(formValue.login.userName, formValue.login.passWord));
+  }
 }

@@ -1,19 +1,36 @@
 <div>
-    <input
-      required
-      [(ngModel)]="userName"
-      type="text"
-      #userNameRef="ngModel"
+  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+    <fieldset ngModelGroup="login">
+      <input
+        required
+        minlength="3"
+        class="ng-pristine ng-invalid gn-touched"
+        [(ngModel)]="userName"
+        name="userName"
+        #userNameRef="ngModel"
+        type="text"
+        ng-reflect-model="ass"
+        ng-feflect-minlength="3"
+        ng-reflect-name="userName"
+      />
 
-    />
-  {{userNameRef.valid}}
-  <input
-    required
-    [(ngModel)]="passWord"
-    type="password"
-    #passWordRef="ngModel"
+      {{userNameRef.valid | json}}
+      <div *ngIf="userNameRef.errors?.required">this is required</div>
+      <div *ngIf="userNameRef.errors?.minlength">should be at least 3 charactors</div>
 
-  />
-  {{passWordRef.valid}}
-    <button (click)="onClick()">Login</button>
-  </div>
+
+      <input
+        required
+        [(ngModel)]="passWord"
+        class="ng-touched gn-dirty ng-valid ng-invalid"
+        type="passWord"
+        name="passWord"
+        #passWordRef="ngModel"
+      />
+
+      {{passWordRef.valid | json}}
+      <div *ngIf="passWordRef.errors?.required">passWord is required</div>
+      <button type="submit">submit</button>
+    </fieldset>
+  </form>
+</div>
