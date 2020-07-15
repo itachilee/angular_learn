@@ -1,0 +1,19 @@
+<div>
+    <input
+      required
+      [(ngModel)]="userName"
+      type="text"
+      #userNameRef="ngModel"
+
+    />
+  {{userNameRef.valid}}
+  <input
+    required
+    [(ngModel)]="passWord"
+    type="password"
+    #passWordRef="ngModel"
+
+  />
+  {{passWordRef.valid}}
+    <button (click)="onClick()">Login</button>
+  </div>
